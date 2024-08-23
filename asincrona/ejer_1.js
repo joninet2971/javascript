@@ -1,19 +1,27 @@
-const miPromesa = new Promise((resolve, reject) => {
+function simularAPI(exito) {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      let exito = true; // Cambia a false para ver el manejo de errores
-  
       if (exito) {
-        resolve("¡Se resolvió la promesa!");
+        resolve("La operación fue exitosa");
       } else {
-        reject("Hubo un error en la promesa.");
+        reject("Hubo un error en la operación");
       }
-    }, 3000);
+    }, 2000);
   });
-  
-  miPromesa
-    .then((mensaje) => {
-      console.log(mensaje); // Esto se ejecuta si la promesa se resuelve
-    })
-    .catch((error) => {
-      console.error(error); // Esto se ejecuta si la promesa es rechazada
-    });
+}
+
+simularAPI(true)
+  .then((mensaje) => {
+    console.log(mensaje); 
+  })
+  .catch((error) => {
+    console.error(error); 
+  });
+
+simularAPI(false)
+  .then((mensaje) => {
+    console.log(mensaje); 
+  })
+  .catch((error) => {
+    console.error(error); 
+  });
